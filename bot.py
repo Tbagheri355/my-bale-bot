@@ -9,7 +9,7 @@ app = Flask(__name__)
 ‌
 @app.route("/")
 def home():
-return "Bot is running and checking for messages!"
+return "Bot is running!"
 ‌
 def send_message(chat_id, text):
 try:
@@ -17,7 +17,7 @@ url = f"{BASE_URL}/sendMessage"
 payload = {"chat_id": chat_id, "text": text}
 requests.post(url, json=payload)
 except Exception as e:
-print(f"Error sending message: {e}")
+print(f"Error: {e}")
 ‌
 def check_updates():
 print("Checking for messages...")
@@ -34,13 +34,12 @@ chat_id = msg.get("chat", {}).get("id")
 text = msg.get("text", "")
 if chat_id:
 if text == "/start":
-send_message(chat_id, "سلام! من دستیار تو هستم 😊")
+send_message(chat_id, "Hello! I am your bot.")
 elif text:
-send_message(chat_id, f"پیام شما یادداشت شد: {text}")
+send_message(chat_id, f"You said: {text}")
 except Exception as e:
 print(f"Update error: {e}")
 ‌
 if __name__ == "__main__":
-# اجرای یک‌باره برای تست شروع
 check_updates()
 app.run(host="0.0.0.0", port=10000)
