@@ -22,7 +22,7 @@ except Exception as e:
 print(f"Error sending message: {e}")
 ‌
 def run_bot():
-print("Dastyar roshan shod... (Bot started)")
+print("Dastyar starting...")
 offset = 0
 while True:
 try:
@@ -43,12 +43,11 @@ if text == "/start":
 send_message(chat_id, "سلام! من دستیار هوشمند تو هستم 😊")
 elif text:
 send_message(chat_id, f"پیام شما یادداشت شد: {text}")
-‌
 except Exception as e:
-print(f"Error in loop: {e}")
-‌
+print(f"Loop Error: {e}")
 time.sleep(1)
 ‌
 if __name__ == "__main__":
+print("Starting Thread...")
 threading.Thread(target=run_bot, daemon=True).start()
 app.run(host="0.0.0.0", port=10000)
