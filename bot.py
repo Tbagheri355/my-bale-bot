@@ -7,7 +7,7 @@ from flask import Flask
 TOKEN = "864658794:LtCVR4dSj3Lp5e7HR4XV-1XQOSTQoB934so"
 BASE_URL = f"https://tapi.bale.ai/bot{TOKEN}"
 ‌
-app = Flask(name)
+app = Flask(__name__)
 ‌
 @app.route("/")
 def home():
@@ -49,6 +49,6 @@ print(f"Error in loop: {e}")
 ‌
 time.sleep(1)
 ‌
-if name == "main":
+if __name__ == "__main__":
 threading.Thread(target=run_bot, daemon=True).start()
 app.run(host="0.0.0.0", port=10000)
